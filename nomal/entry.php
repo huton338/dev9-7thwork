@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// ログイン状態チェック
+if (!isset($_SESSION["NAME"])) {
+    header("Location: Logout.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -20,12 +30,22 @@
                 <input type="text" name="title" id="title" class="uk-input">
             </li>
             <li class="form-item">
-                <label for="detail">本文</label>
-                <textarea name="detail" id="detail" cols="30" rows="10" class="uk-textarea"></textarea>
+                <label for="url">URL</label>
+                <input type="text" name="url" id="url" class="uk-input">
+            </li>
+            <li class="form-item">
+                <label for="memo">本文</label>
+                <textarea name="memo" id="memo" cols="30" rows="10" class="uk-textarea"></textarea>
             </li>
         </ul>
         <input type="submit" value="送信">
-    </form>    
+    </form>
+</div>
+<div>
+    <ul>
+        <li><a href="index.php">登録一覧</a></li>
+        <li><a href="Logout.php">ログアウト</a></li>
+    </ul>    
 </div>
 </body>
 </html>
